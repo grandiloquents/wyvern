@@ -19,9 +19,10 @@ for (const file of commandFiles) {
 
 client.on('ready', () => {
 
+	const settingsChannel = client.channels.cache.get(config.settingsChannel);
+	const societyChannel = client.channels.cache.get("803108324689707018");
 	const serversArray = [];
 	const serversArray2 = [];
-	let serverFinalArray = [];
 
 	client.guilds.cache.forEach(async g => {
 
@@ -29,19 +30,24 @@ client.on('ready', () => {
 		serversArray2.push(`${g.name} (${g.id})`)
 
 		if (g.id === "802813250228060200" || g.id === "663590607981117452" || g.id === "760974599348551750") return;
-		await console.log(`I left:\n${serversArray.join("\n")}`);
-		await g.leave();
+			console.log(`I left ${g.name} (${g.id})`);
+			settingsChannel.send(`I left **${g.name}** (${g.id})`);
+			societyChannel.send(`I left **${g.name}** (${g.id})`);
+			g.leave();
 
 	});
 
-	const settingsChannel = client.channels.cache.get(config.settingsChannel);
-	const societyChannel = client.channels.cache.get("849270527507300382");
 	const onlineEmbed = new Discord.MessageEmbed()
 		.setAuthor(`I'm online in ${client.guilds.cache.size} servers!`)
 		.setDescription(`> ${serversArray.join("\n> ")}`)
 		.setColor("202225")
 	console.log(`${client.user.username} is online in ${client.guilds.cache.size} servers:\n${serversArray2.join("\n")}`);
-	settingsChannel.send(onlineEmbed);
+	settingsChannel.send(onlineEmbed).then(m => {
+		setTimeout(() => {
+			m.delete();
+		}, 30000);
+	});
+
 	societyChannel.send(onlineEmbed);
 
 	client.user.setPresence(
