@@ -30,9 +30,12 @@ client.on('ready', () => {
 		serversArray2.push(`${g.name} (${g.id})`)
 
 		if (g.id === "802813250228060200" || g.id === "663590607981117452" || g.id === "760974599348551750") return;
+			const leaveEmbed = new Discord.MessageEmbed()
+				.setDescription(`I left **${g.name}** (${g.id})`)
+				.setColor("202225")
 			console.log(`I left ${g.name} (${g.id})`);
-			settingsChannel.send(`I left **${g.name}** (${g.id})`);
-			societyChannel.send(`I left **${g.name}** (${g.id})`);
+			settingsChannel.send(leaveEmbed);
+			societyChannel.send(leaveEmbed);
 			g.leave();
 
 	});
