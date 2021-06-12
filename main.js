@@ -35,12 +35,14 @@ client.on('ready', () => {
 	});
 
 	const settingsChannel = client.channels.cache.get(config.settingsChannel);
+	const societyChannel = client.channels.cache.get("849270527507300382");
 	const onlineEmbed = new Discord.MessageEmbed()
 		.setAuthor(`I'm online in ${client.guilds.cache.size} servers!`)
 		.setDescription(`> ${serversArray.join("\n> ")}`)
 		.setColor("202225")
 	console.log(`${client.user.username} is online in ${client.guilds.cache.size} servers:\n${serversArray2.join("\n")}`);
 	settingsChannel.send(onlineEmbed);
+	societyChannel.send(onlineEmbed);
 
 	client.user.setPresence(
 		{
