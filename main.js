@@ -20,7 +20,6 @@ for (const file of commandFiles) {
 client.on('ready', () => {
 
 	const settingsChannel = client.channels.cache.get(config.settingsChannel);
-	const societyChannel = client.channels.cache.get("803108324689707018");
 	const serversArray = [];
 	const serversArray2 = [];
 
@@ -35,7 +34,6 @@ client.on('ready', () => {
 				.setColor("202225")
 			console.log(`I left ${g.name} (${g.id})`);
 			settingsChannel.send(leaveEmbed);
-			societyChannel.send(leaveEmbed);
 			g.leave();
 
 	});
@@ -45,13 +43,7 @@ client.on('ready', () => {
 		.setDescription(`> ${serversArray.join("\n> ")}`)
 		.setColor("202225")
 	console.log(`${client.user.username} is online in ${client.guilds.cache.size} servers:\n${serversArray2.join("\n")}`);
-	settingsChannel.send(onlineEmbed).then(m => {
-		setTimeout(() => {
-			m.delete();
-		}, 30000);
-	});
-
-	societyChannel.send(onlineEmbed);
+	settingsChannel.send(onlineEmbed)
 
 	client.user.setPresence(
 		{
@@ -65,13 +57,25 @@ client.on('ready', () => {
 })
 
 client.on('message', message => {
+	
+	if (message.content === ".work") {
+		if (message.author.id != "680598210892529682") return;
+		const workEmbed = new Discord.MessageEmbed()
+			.setAuthor("time to work!")
+			.setDescription(`20 mins have passed since you last worked`)
+			.addField("last work message", `[click here!](${message.url})`)
+		setTimeout(() => {
+			message.author.send(workEmbed)
+		}, 20 * 60 * 1000);
+	};
+	
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
 
 	if (command === "say") {
-		var argsSplit = args.slice();
+		let argsSplit = args.slice();
 		argsSplit.splice(0,1);
 
 		const sayMsg = argsSplit.join(" ");
