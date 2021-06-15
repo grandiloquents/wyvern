@@ -57,10 +57,15 @@ client.on('ready', () => {
 });
 
 client.on("guildMemberUpdate", (oldMember, newMember) => {
-  	const newRole = newMember.roles.cache
-  		.filter(r => !oldMember.roles.cache.has(r.id))
-  		.first()
-
+	
+	if (!oldMember.roles.cache.has("849647751662534716") && newMember.roles.cache.has("849647751662534716")) {
+		newMember.roles.add("849647734872866846");
+	}
+	
+	if (!oldMember.roles.cache.has("849647751662534716") && newMember.roles.cache.has("849647751662534716")) {
+		newMember.roles.add("849647734872866846");
+	}
+	
 	if (oldMember.roles.cache.has("849647747304390666") && !newMember.roles.cache.has("849647747304390666")) {
 		newMember.roles.remove("849647734872866846");
 	}
@@ -69,10 +74,6 @@ client.on("guildMemberUpdate", (oldMember, newMember) => {
 		newMember.roles.remove("849647734872866846");
 	}
 
-	if (newRole === null || newRole === undefined) return;
-	if (newRole.id != "849647747304390666" && newRole.id != "849647751662534716") return;
-
-	newMember.roles.add("849647734872866846");
 });
 
 client.on('message', message => {
