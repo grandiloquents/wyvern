@@ -54,7 +54,21 @@ client.on('ready', () => {
 			status: 'dnd',
 		}
 	)
-})
+});
+
+client.on("guildMemberUpdate", (oldMember, newMember) => {
+
+	const newRole = newMember.roles.cache
+	  .filter(r => !oldMember.roles.cache.has(r.id))
+	  .first()
+
+	if (newRole.id != "702857267657048096") {
+		return;
+	} else {
+		newMember.setNickname(`${newMember.displayName} (${newRole.name})`)
+	}
+  
+ });
 
 client.on('message', message => {
 	
