@@ -57,18 +57,17 @@ client.on('ready', () => {
 });
 
 client.on("guildMemberUpdate", (oldMember, newMember) => {
+	const guild = client.guilds.cache.get("663590607981117452")
+	const messenger = guild.roles.cache.get("849647751662534716");
+  	const newRole = newMember.roles.cache
+  		.filter(r => !oldMember.roles.cache.has(r.id))
+  		.first()
 
-	const newRole = newMember.roles.cache
-	  .filter(r => !oldMember.roles.cache.has(r.id))
-	  .first()
+	if (newRole === null || newRole === undefined) return console.log("pmrole got removed");;
+	if (newRole.id != "849647747304390666" || newRole.id != "849647751662534716") return console.log("another got added");;
 
-	if (newRole.id != "702857267657048096") {
-		return;
-	} else {
-		newMember.setNickname(`${newMember.displayName} (${newRole.name})`)
-	}
-  
- });
+	console.log("pmrole got added");
+});
 
 client.on('message', message => {
 	
