@@ -78,7 +78,7 @@ client.on("guildMemberUpdate", (oldMember, newMember) => {
 client.on('message', message => {
 	
 	if (message.content === ".work") {
-		if (message.author.id != "178195931706032128") return;
+		if (message.author.id != "178195931706032128" || message.author.id != "680598210892529682") return;
 		const workEmbed = new Discord.MessageEmbed()
 			.setAuthor("time to work!")
 			.setDescription(`20 mins have passed since you last worked`)
