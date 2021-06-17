@@ -28,7 +28,7 @@ client.on('ready', () => {
 		serversArray.push(`**${g.name}** (${g.id})`)
 		serversArray2.push(`${g.name} (${g.id})`)
 
-		if (g.id === "802813250228060200" || g.id === "663590607981117452" || g.id === "760974599348551750") return;
+		if (g.id === "802813250228060200" || g.id === "663590607981117452" || g.id === "760974599348551750" || g.id === "853177494889955339") return;
 			const leaveEmbed = new Discord.MessageEmbed()
 				.setDescription(`I left **${g.name}** (${g.id})`)
 				.setColor("202225")
