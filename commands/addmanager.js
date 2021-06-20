@@ -23,9 +23,9 @@ module.exports = {
                     message.channel.send(errEmbed);
                 }
 
-                pmMember.roles.add("849647747304390666");
-                pmMember.roles.add("849627497795551232");
-                pmMember.roles.add("849647734872866846");
+                if (!pmMember.roles.cache.has("849647747304390666")) pmMember.roles.add("849647747304390666");
+                if (!pmMember.roles.cache.has("849627497795551232")) pmMember.roles.add("849627497795551232");
+                if (!pmMember.roles.cache.has("849647734872866846")) pmMember.roles.add("849647734872866846");
                 
                 const userHighestRole = pmMember.roles.highest;
                 const botHighestRole = message.guild.me.roles.highest;
@@ -34,7 +34,7 @@ module.exports = {
                     .setColor("#202225");
                 if(botHighestRole > userHighestRole) return message.channel.send(highErrEmbed);
 
-                pmMember.setNickname(`am・${pmMember.displayName}`);
+                pmMember.setNickname(`pm・${pmMember.displayName}`);
 
                 const successEmbed = new Discord.MessageEmbed()
                     .setDescription(`Successfully added pm roles to ${pmMember}!`)
@@ -53,10 +53,10 @@ module.exports = {
                         .setColor("#202225");
                     message.channel.send(errEmbed);
                 }
-
-                amMember.roles.add("849647751662534716");
-                amMember.roles.add("849627497795551232");
-                amMember.roles.add("849647734872866846");
+			
+                if (!amMember.roles.cache.has("849647751662534716")) amMember.roles.add("849647751662534716");
+                if (!amMember.roles.cache.has("849627497795551232")) amMember.roles.add("849627497795551232");
+                if (!amMember.roles.cache.has("849647734872866846")) amMember.roles.add("849647734872866846");
 
                 const userHighestRole2 = pmMember.roles.highest;
                 const botHighestRole2 = message.guild.me.roles.highest;
