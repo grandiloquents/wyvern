@@ -134,7 +134,10 @@ client.on('message', message => {
 		client.commands.get(command).execute(message, args);
 	} catch (error) {
 		console.error(error);
-		message.reply('there was an error trying to execute that command!');
+		const errorEmbed = new Discord.MessageEmbed()
+			.setDescription('There was an error trying to execute that command!')
+			.setColor('#202225')
+		message.channel.send(errorEmbed);
 	}
 });
 
