@@ -4,6 +4,7 @@ module.exports = {
 	name: 'removemanager',
 	description: 'remove pm/am role from someone',
 	execute(message, args) {
+	if (!message.author.hasPermission('MANAGE_ROLES')) return;
         const role = message.content.split(" ")[1]
         const helpEmbed = new Discord.MessageEmbed()
             .setDescription("**Usage:**\n```\n??removemanager <pm/am> <mention/id>\n```")
