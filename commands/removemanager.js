@@ -5,7 +5,7 @@ module.exports = {
 	description: 'remove pm/am role from someone',
 	execute(message, args) {
 		
-	if (!message.author.hasPermission('MANAGE_ROLES')) return;
+	if (!message.member.hasPermission('MANAGE_ROLES')) return;
 		
         const role = message.content.split(" ")[1]
         const helpEmbed = new Discord.MessageEmbed()
