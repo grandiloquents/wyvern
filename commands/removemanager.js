@@ -27,7 +27,7 @@ module.exports = {
                     .setDescription("User doesn't have the roles.")
                     .setColor("#202225");
 
-                if (pmMember.roles.cache.has("849647747304390666") && pmMember.roles.cache.has("849627497795551232") && pmMember.roles.cache.has("849647734872866846")) return message.channel.send(alrHasEmbed);
+                if (!pmMember.roles.cache.has("849647747304390666") && !pmMember.roles.cache.has("849627497795551232") && !pmMember.roles.cache.has("849647734872866846")) return message.channel.send(alrHasEmbed);
 			
 		        pmMember.roles.remove("849647747304390666");
                 pmMember.roles.remove("849627497795551232");
