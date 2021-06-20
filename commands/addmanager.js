@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const client = require("../main.js")
+const client = require("H:/node.js-main/main.js")
 module.exports = {
 	name: 'addmanager',
 	description: 'add pm/am role to someone',
@@ -11,71 +11,64 @@ module.exports = {
 
         if (!role) return message.channel.send(helpEmbed);
 
-        let mention = message.mentions.users.first();
-
         switch (role) {
             case "pm":
-		try {
-            		if (!mention) {
-                		mention = client.users.cache.get(message.content.split(" ")[2]);
-            		}
-          	}
-        	catch(err) {
-            		const errEmbed = new Discord.MessageEmbed()
-                		.setDescription("An error occured while executing this command. Please check if you provided a valid user ID.")
-                		.setColor("#202225");
-            		message.channel.send(errEmbed);
-            		console.log(err);
-        	} 
-			
-                mention.roles.add("849647747304390666");
-                mention.roles.add("849627497795551232");
-                mention.roles.add("849647734872866846");
+
+                let pmMember = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(message.content.split(" ")[2]))
+
+                if (!pmMember) {
+                    const errEmbed = new Discord.MessageEmbed()
+                        .setDescription("An error occured while executing this command. Please check if you provided a valid user ID.")
+                        .setColor("#202225");
+                    message.channel.send(errEmbed);
+                }
+
+                pmMember.roles.add("849647747304390666");
+                pmMember.roles.add("849627497795551232");
+                pmMember.roles.add("849647734872866846");
                 
-                const highestRole = mention.roles.highest;
+                const userHighestRole = pmMember.roles.highest;
+                const botHighestRole = message.guild.me.roles.highest;
                 const highErrEmbed = new Discord.MessageEmbed()
                     .setDescription("Unable to change nickname due to role hierarchy problems.")
                     .setColor("#202225");
-                if(!highestRole.editable) return message.channel.send(highErrEmbed);
+                if(botHighestRole > userHighestRole) return message.channel.send(highErrEmbed);
 
-                mention.setNickname(`am・${mention.displayName}`);
+                pmMember.setNickname(`am・${pmMember.displayName}`);
 
                 const successEmbed = new Discord.MessageEmbed()
-                    .setDescription(`Successfully added am roles to ${mention}!`)
+                    .setDescription(`Successfully added pm roles to ${pmMember}!`)
                     .setColor("#202225")
 
                 message.channel.send(successEmbed);
 
                 break;
             case "am":
-			
-		try {
-            		if (!mention) {
-                		mention = client.users.cache.get(message.content.split(" ")[2]);
-            		}
-          	}
-        	catch(err) {
-            		const errEmbed = new Discord.MessageEmbed()
-                		.setDescription("An error occured while executing this command. Please check if you provided a valid user ID.")
-                		.setColor("#202225");
-            		message.channel.send(errEmbed);
-            		console.log(err);
-        	} 
-			
-                mention.roles.add("849647751662534716");
-                mention.roles.add("849627497795551232");
-                mention.roles.add("849647734872866846");
 
-                const highestRole2 = mention.roles.highest;
+                let amMember = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(message.content.split(" ")[2]))
+
+                if (!amMember) {
+                    const errEmbed = new Discord.MessageEmbed()
+                        .setDescription("An error occured while executing this command. Please check if you provided a valid user ID.")
+                        .setColor("#202225");
+                    message.channel.send(errEmbed);
+                }
+
+                amMember.roles.add("849647751662534716");
+                amMember.roles.add("849627497795551232");
+                amMember.roles.add("849647734872866846");
+
+                const userHighestRole2 = pmMember.roles.highest;
+                const botHighestRole2 = message.guild.me.roles.highest;
                 const highErrEmbed2 = new Discord.MessageEmbed()
                     .setDescription("Unable to change nickname due to role hierarchy problems.")
                     .setColor("#202225");
-                if(!highestRole2.editable) return message.channel.send(highErrEmbed2);
+                if(botHighestRole2 > userHighestRole2) return message.channel.send(highErrEmbed2);
 
-                mention.setNickname(`am・${mention.displayName}`);
+                amMember.setNickname(`am・${amMember.displayName}`);
 
                 const successEmbed2 = new Discord.MessageEmbed()
-                    .setDescription(`Successfully added am roles to ${mention}!`)
+                    .setDescription(`Successfully added am roles to ${amMember}!`)
                     .setColor("#202225")
                 message.channel.send(successEmbed2);
 
