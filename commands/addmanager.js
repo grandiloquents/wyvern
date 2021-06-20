@@ -4,6 +4,7 @@ module.exports = {
 	name: 'addmanager',
 	description: 'add pm/am role to someone',
 	execute(message, args) {
+	if (!message.author.hasPermission('MANAGE_ROLES`) return;
         const role = message.content.split(" ")[1]
         const helpEmbed = new Discord.MessageEmbed()
             .setDescription("**Usage:**\n```\n??addmanager <pm/am> <mention/id>\n```")
