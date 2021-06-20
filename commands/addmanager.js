@@ -1,5 +1,5 @@
 const Discord = require("discord.js")
-const client = require("H:/node.js-main/main.js")
+const client = require("../main.js")
 module.exports = {
 	name: 'addmanager',
 	description: 'add pm/am role to someone',
