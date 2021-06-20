@@ -22,10 +22,16 @@ module.exports = {
                         .setColor("#202225");
                     message.channel.send(errEmbed);
                 }
+			
+		const alrHasEmbed = new Discord.MessageEmbed()
+                    .setDescription("User already has the roles.")
+                    .setColor("#202225");
 
-                if (!pmMember.roles.cache.has("849647747304390666")) pmMember.roles.add("849647747304390666");
-                if (!pmMember.roles.cache.has("849627497795551232")) pmMember.roles.add("849627497795551232");
-                if (!pmMember.roles.cache.has("849647734872866846")) pmMember.roles.add("849647734872866846");
+                if (pmMember.roles.cache.has("849647747304390666") && pmMember.roles.cache.has("849627497795551232") && pmMember.roles.cache.has("849647734872866846")) return message.channel.send(alrHasEmbed);
+			
+		pmMember.roles.add("849647747304390666");
+                pmMember.roles.add("849627497795551232");
+                pmMember.roles.add("849647734872866846");
                 
                 const userHighestRole = pmMember.roles.highest;
                 const botHighestRole = message.guild.me.roles.highest;
@@ -54,9 +60,15 @@ module.exports = {
                     message.channel.send(errEmbed);
                 }
 			
-                if (!amMember.roles.cache.has("849647751662534716")) amMember.roles.add("849647751662534716");
-                if (!amMember.roles.cache.has("849627497795551232")) amMember.roles.add("849627497795551232");
-                if (!amMember.roles.cache.has("849647734872866846")) amMember.roles.add("849647734872866846");
+		const alrHasEmbed2 = new Discord.MessageEmbed()
+                    .setDescription("User already has the roles.")
+                    .setColor("#202225");
+
+                if (amMember.roles.cache.has("849647751662534716") && amMember.roles.cache.has("849627497795551232") && amMember.roles.cache.has("849647734872866846")) return message.channel.send(alrHasEmbed2);
+			
+                amMember.roles.add("849647751662534716");
+                amMember.roles.add("849627497795551232");
+                amMember.roles.add("849647734872866846");
 
                 const userHighestRole2 = pmMember.roles.highest;
                 const botHighestRole2 = message.guild.me.roles.highest;
