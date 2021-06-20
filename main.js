@@ -14,6 +14,7 @@ for (const file of commandFiles) {
 		const ping = "ping";
 		const vanity = "vanity";
 		const earn = "earn";
+		const addManager = "addManager";
 	client.commands.set(command.name, command);
 }
 
@@ -77,6 +78,8 @@ client.on("guildMemberUpdate", (oldMember, newMember) => {
 
 client.on('message', message => {
 	
+	if (message.author.bot) return;
+	
 	if (message.content === ".work") {
 		if (message.author.id === "178195931706032128" || message.author.id === "680598210892529682") {
 			const workEmbed = new Discord.MessageEmbed()
@@ -91,7 +94,7 @@ client.on('message', message => {
 		}
 	};
 	
-	if (!message.content.startsWith(prefix) || message.author.bot) return;
+	if (!message.content.startsWith(prefix)) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
 	const command = args.shift().toLowerCase();
