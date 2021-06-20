@@ -12,21 +12,22 @@ module.exports = {
         if (!role) return message.channel.send(helpEmbed);
 
         let mention = message.mentions.users.first();
-        try {
-            if (!mention) {
-                mention = client.users.cache.get(message.content.split(" ")[2]);
-            }
-          }
-        catch(err) {
-            const errEmbed = new Discord.MessageEmbed()
-                .setDescription("An error occured while executing this command. Please check if you provided a valid user ID.")
-                .setColor("#202225");
-            message.channel.send(errEmbed);
-            console.log(err);
-        } 
 
         switch (role) {
             case "pm":
+		try {
+            		if (!mention) {
+                		mention = client.users.cache.get(message.content.split(" ")[2]);
+            		}
+          	}
+        	catch(err) {
+            		const errEmbed = new Discord.MessageEmbed()
+                		.setDescription("An error occured while executing this command. Please check if you provided a valid user ID.")
+                		.setColor("#202225");
+            		message.channel.send(errEmbed);
+            		console.log(err);
+        	} 
+			
                 mention.roles.add("849647747304390666");
                 mention.roles.add("849627497795551232");
                 mention.roles.add("849647734872866846");
@@ -47,6 +48,20 @@ module.exports = {
 
                 break;
             case "am":
+			
+		try {
+            		if (!mention) {
+                		mention = client.users.cache.get(message.content.split(" ")[2]);
+            		}
+          	}
+        	catch(err) {
+            		const errEmbed = new Discord.MessageEmbed()
+                		.setDescription("An error occured while executing this command. Please check if you provided a valid user ID.")
+                		.setColor("#202225");
+            		message.channel.send(errEmbed);
+            		console.log(err);
+        	} 
+			
                 mention.roles.add("849647751662534716");
                 mention.roles.add("849627497795551232");
                 mention.roles.add("849647734872866846");
