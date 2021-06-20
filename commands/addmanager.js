@@ -70,7 +70,7 @@ module.exports = {
                 amMember.roles.add("849627497795551232");
                 amMember.roles.add("849647734872866846");
 
-                const userHighestRole2 = pmMember.roles.highest;
+                const userHighestRole2 = amMember.roles.highest;
                 const botHighestRole2 = message.guild.me.roles.highest;
                 const highErrEmbed2 = new Discord.MessageEmbed()
                     .setDescription("Unable to change nickname due to role hierarchy problems.")
