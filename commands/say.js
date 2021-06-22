@@ -16,9 +16,14 @@ module.exports = {
             		.setDescription("An error occured while executing this command. Please check if you provided a valid message.")
             		.setColor("#202225");
 
-        	if (!sayChannel) return message.channel.send(args.join(" ")).then{message.delete()};
+        	if (!sayChannel) {
+			message.channel.send(args.join(" "));
+			message.delete();
+			return;
+		}
 		if (!sayMsg) return message.channel.send(errEmbed2);
 
-		sayChannel.send(sayMsg).then{message.delete()};
+		sayChannel.send(sayMsg);
+		message.delete();
 	},
 };
