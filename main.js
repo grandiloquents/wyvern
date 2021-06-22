@@ -12,7 +12,7 @@ const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('
 for (const file of commandFiles) {
 	const command = require(`./commands/${file}`);
 		const ping = "ping";
-		const addmanager = "addManager";
+		const addmanager = "addmanager";
 		const removemanager = "removemanager";
 		const botinfo = "botinfo";
 		const bi = "bi"
