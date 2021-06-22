@@ -43,7 +43,7 @@ module.exports = {
                     .setColor("#202225");
                 if(botHighestRole < userHighestRole) return message.channel.send(highErrEmbed);
 
-                pmMember.setNickname(`pm・${pmMember.displayName}`);
+                pmMember.setNickname(`pm・${pmMember.user.username}`);
 
                 const successEmbed = new Discord.MessageEmbed()
                     .setDescription(`Successfully added pm roles to ${pmMember}!`)
@@ -80,7 +80,7 @@ module.exports = {
                     .setColor("#202225");
                 if(botHighestRole2 < userHighestRole2) return message.channel.send(highErrEmbed2);
 
-                amMember.setNickname(`am・${amMember.displayName}`);
+                amMember.setNickname(`am・${amMember.user.username}`);
 
                 const successEmbed2 = new Discord.MessageEmbed()
                     .setDescription(`Successfully added am roles to ${amMember}!`)
