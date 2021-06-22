@@ -10,18 +10,18 @@ module.exports = {
 	if (!args[0]) return message.channel.send(helpEmbed);
         let argsSplit = args.slice();
 	argsSplit.splice(0,1);
-	const errEmbed2 = new Discord.MessageEmbed()
-            .setDescription("An error occured while executing this command. Please check if you provided a valid message.")
-            .setColor("#202225");
 	const sayMsg = argsSplit.join(" ");
-	if (!sayMsg) return message.channel.send(errEmbed2);
 	const sayChannel = client.channels.cache.get(args[0].substring(2).substring(0,18)) || client.channels.cache.get(`${args[0]}`)
         const errEmbed = new Discord.MessageEmbed()
             .setDescription("An error occured while executing this command. Please check if you provided a valid channel.")
             .setColor("#202225");
+	const errEmbed2 = new Discord.MessageEmbed()
+            .setDescription("An error occured while executing this command. Please check if you provided a valid message.")
+            .setColor("#202225");
 
         if (!sayChannel) return message.channel.send(errEmbed);
+	if (!sayMsg) return message.channel.send(errEmbed2);
 
-		sayChannel.send(sayMsg);
+	sayChannel.send(sayMsg);
 	},
 };
