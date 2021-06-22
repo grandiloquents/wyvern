@@ -8,7 +8,7 @@ const version = packageJson.version;
 const npmV = packageJson["npm-version"];
 const config = require("../config.json");
 module.exports = {
-	name: 'bi',
+	name: 'botinfo',
 	description: 'bots info',
 	execute(message, args) {
         const duration = moment.duration(client.uptime).format("D[d] H[h] m[m] s[s]");
