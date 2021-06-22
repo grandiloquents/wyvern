@@ -96,38 +96,6 @@ client.on('message', message => {
 	
 	if (!message.content.startsWith(prefix)) return;
 
-	const args = message.content.slice(prefix.length).trim().split(/ +/);
-	const command = args.shift().toLowerCase();
-
-	if (command === "say") {
-		let argsSplit = args.slice();
-		argsSplit.splice(0,1);
-
-		const sayMsg = argsSplit.join(" ");
-		const sayChannel = client.channels.cache.get(args[0]);
-
-		sayChannel.send(sayMsg);
-	}
-
-	if (command === "si" || command === "serverinfo") {
-		const siEmbed = new Discord.MessageEmbed()
-			.setTitle(message.guild.name)
-			.addFields({
-				name: "server info",
-				value: `✎ . . ⃕**owner:** ${message.guild.owner.user.username}#${message.guild.owner.user.discriminator} (<@${message.guild.owner.user.id}>)\n➭¹ **voice region:** ${message.guild.region}\n✎ . . ⃕**verification:** ${message.guild.verificationLevel.toLocaleLowerCase()}`
-			},
-			{
-				name: "counters",
-				value:`✎ . . ⃕**member:** ${message.guild.memberCount}\n➭¹ **channel:** ${message.guild.channels.cache.size}\n✎ . . ⃕**role:** ${message.guild.roles.cache.size}`
-			})
-			.setColor("c3d9c3")
-			.setThumbnail(`${message.guild.iconURL()}`)
-			.setImage("https://cdn.discordapp.com/attachments/747748343119347783/850024231055523880/unknown.png")
-			.setFooter(`server id: ${message.guild.id}`)
-
-		message.channel.send(siEmbed);
-	}
-
 	if (!client.commands.has(command)) return;
 
 	try {
