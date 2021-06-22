@@ -12,14 +12,11 @@ module.exports = {
 	argsSplit.splice(0,1);
 	const sayMsg = argsSplit.join(" ");
 	const sayChannel = client.channels.cache.get(args[0].substring(2).substring(0,18)) || client.channels.cache.get(`${args[0]}`)
-        const errEmbed = new Discord.MessageEmbed()
-            .setDescription("An error occured while executing this command. Please check if you provided a valid channel.")
-            .setColor("#202225");
 	const errEmbed2 = new Discord.MessageEmbed()
             .setDescription("An error occured while executing this command. Please check if you provided a valid message.")
             .setColor("#202225");
 
-        if (!sayChannel) return message.channel.send(errEmbed);
+        if (!sayChannel) return message.channel.send(args);
 	if (!sayMsg) return message.channel.send(errEmbed2);
 
 	sayChannel.send(sayMsg);
