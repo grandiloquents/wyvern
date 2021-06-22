@@ -41,7 +41,7 @@ module.exports = {
                 const highErrEmbed = new Discord.MessageEmbed()
                     .setDescription("Unable to change nickname due to role hierarchy problems.")
                     .setColor("#202225");
-                if(botHighestRole > userHighestRole) return message.channel.send(highErrEmbed);
+                if(botHighestRole < userHighestRole) return message.channel.send(highErrEmbed);
 
                 pmMember.setNickname(`pm・${pmMember.displayName}`);
 
