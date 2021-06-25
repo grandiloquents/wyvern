@@ -36,7 +36,11 @@ module.exports = {
                 pmMember.roles.add("849627497795551232");
                 pmMember.roles.add("849647734872866846");
 
-                pmMember.setNickname(`pm・${pmMember.user.username}`);
+		if (pmMember.roles.cache.has("849647751662534716")) {
+			pmMember.setNickname(`apm・${pmMember.user.username}`);
+		} else {
+                	pmMember.setNickname(`pm・${pmMember.user.username}`);
+		}
 
                 const successEmbed = new Discord.MessageEmbed()
                     .setDescription(`Successfully added pm roles to ${pmMember}!`)
@@ -66,7 +70,11 @@ module.exports = {
                 amMember.roles.add("849627497795551232");
                 amMember.roles.add("849647734872866846");
 
-                amMember.setNickname(`am・${amMember.user.username}`);
+                if (amMember.roles.cache.has("849647747304390666")) {
+			amMember.setNickname(`apm・${amMember.user.username}`);
+		} else {
+                	amMember.setNickname(`am・${amMember.user.username}`);
+		}
 
                 const successEmbed2 = new Discord.MessageEmbed()
                     .setDescription(`Successfully added am roles to ${amMember}!`)
