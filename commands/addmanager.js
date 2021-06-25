@@ -35,13 +35,6 @@ module.exports = {
 		pmMember.roles.add("849647747304390666");
                 pmMember.roles.add("849627497795551232");
                 pmMember.roles.add("849647734872866846");
-                
-                const userHighestRole = pmMember.roles.highest;
-                const botHighestRole = message.guild.me.roles.highest;
-                const highErrEmbed = new Discord.MessageEmbed()
-                    .setDescription("Unable to change nickname due to role hierarchy problems.")
-                    .setColor("#202225");
-                if(botHighestRole < userHighestRole) return message.channel.send(highErrEmbed);
 
                 pmMember.setNickname(`pm・${pmMember.user.username}`);
 
@@ -72,13 +65,6 @@ module.exports = {
                 amMember.roles.add("849647751662534716");
                 amMember.roles.add("849627497795551232");
                 amMember.roles.add("849647734872866846");
-
-                const userHighestRole2 = amMember.roles.highest;
-                const botHighestRole2 = message.guild.me.roles.highest;
-                const highErrEmbed2 = new Discord.MessageEmbed()
-                    .setDescription("Unable to change nickname due to role hierarchy problems.")
-                    .setColor("#202225");
-                if(botHighestRole2 < userHighestRole2) return message.channel.send(highErrEmbed2);
 
                 amMember.setNickname(`am・${amMember.user.username}`);
 
